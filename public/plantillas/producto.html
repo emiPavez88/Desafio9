@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Mesajeria </title>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+    integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/main.js"></script>
+
+</head>
+
+<body>
+    <h1>  Ingrese producto </h2>
+        <table  class=" table">
+            <thead>
+                <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Thumbail</th> 
+            </tr> 
+            </thead>
+
+        <% for (const producto of productos) {%>
+        <tr>
+            <td>
+                <%=producto.id%>
+            </td>
+            <td>
+                <%=producto.name%>
+            </td>
+            <td>
+                <%=producto.price%>
+            </td>
+            <td>
+                <img src="<%=producto.thumbnail%>" />
+            </td>
+    
+        </tr>
+        <%};%>
+
+    </table>
+
+    
+<br>
+<br>
+<div>
+    <h2>  Mensajes </h2>
+    <form onsubmit="return addMessage(this)">
+        <input type="text" id="id" placeholder="Mail del usuario">
+        <input type="text" id="nombre" placeholder="nombre del usuario">
+        <input type="text" id="apellido" placeholder="apellido del usuario">
+        <input type="text" id="edad" placeholder="edad del usuario">
+        <input type="text" id="alias" placeholder="alias del usuario">
+        <input type="text" id="avatar" placeholder="avatar del usuario">
+        <input type="text" id="text" placeholder="mensaje del usuario">
+        <input type="submit" value="Enviar">
+    </form>
+    <div id="mensajes"></div>
+    <script src="js/main.js"></script> 
+</div>
+
+</body>
+
+</html>
